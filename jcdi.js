@@ -9,10 +9,11 @@ n_observer = function () {
      * @param dataRules - the rules to validate by
      * @param errorCallback - the call back function to run if an error occurred
      */
-    this.hijackForm = function (id, dataRules = {}, errorCallback = function () {}) {
+    this.hijackForm = function (id, dataRules, errorCallback = function (data) { console.log(data)}) {
         var form = document.getElementById(id);
 
         form.addEventListener("submit", function (e) {
+
 
             //run form info
             var formData = new n_formData(id);
@@ -31,7 +32,7 @@ n_observer = function () {
 
 
 };
-/*********************************jcdi form**************************************/
+/*******************************jcdi form**************************************/
 function n_formData(formId){
 
     /**
@@ -297,7 +298,7 @@ n_validator = function (formData, dataRule={}) {
 
            }
 
-            /*****add the n_err class to fields with errors***/
+            /******add the n_err class to fields with errors***/
             var erroredField = document.getElementById(formData.tag).elements[field];
             if(validData == false){
                 if(!erroredField.classList.contains('n_err')){
