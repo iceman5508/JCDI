@@ -1,3 +1,3 @@
 # JCDI
 
-Pure JavaScript Data Sanitization plugin. Please see documentation for installation and usage information. 
+Pure JavaScript Data Sanitization plugin. Please see documentation (JCDI.pdf) for installation and usage information. 
