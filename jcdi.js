@@ -13,9 +13,7 @@ n_observer = function () {
         var form = document.getElementById(id);
 
         form.addEventListener("submit", function (e) {
-
-
-            //run form info
+          //run form info
             var formData = new n_formData(id);
             new n_validator(formData, dataRules);
             this.error = formData.error;
