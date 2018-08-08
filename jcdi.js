@@ -1,7 +1,6 @@
 n_observer = function () {
 
       this.error = [];
-      this.hasError = true;
 
     /**
      * This is the entry function for the plugin
@@ -19,14 +18,13 @@ n_observer = function () {
             new n_validator(formData, dataRules);
             this.error = formData.error;
             formData.error=[];
-            if(this.error.length > 0) {
-                e.preventDefault();
-                errorCallback(this.error);
-            }else{
-                this.hasError = false;
-            }
-
-        });
+            });
+        if(this.error.length > 0) {
+            e.preventDefault();
+            errorCallback(this.error);
+            return false;
+        }
+        return true;
 
     }
 
