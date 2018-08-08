@@ -1,6 +1,7 @@
 n_observer = function () {
 
       this.error = [];
+      this.hasError = true;
 
     /**
      * This is the entry function for the plugin
@@ -21,6 +22,8 @@ n_observer = function () {
             if(this.error.length > 0) {
                 e.preventDefault();
                 errorCallback(this.error);
+            }else{
+                this.hasError = false;
             }
 
         });
