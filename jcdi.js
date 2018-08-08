@@ -1,7 +1,5 @@
 n_observer = function () {
 
-      this.error = [];
-
     /**
      * This is the entry function for the plugin
      * Accepts the id of the form to hijack and then begins the data validation
@@ -9,23 +7,18 @@ n_observer = function () {
      * @param dataRules - the rules to validate by
      * @param errorCallback - the call back function to run if an error occurred
      */
-    this.hijackForm = function (id, dataRules, errorCallback = function (data) { console.log(data)}) {
+    this.hijackForm = function (id, dataRules, Callback = function (status,data) { console.log(data)} ) {
         var form = document.getElementById(id);
-
         form.addEventListener("submit", function (e) {
-          //run form info
             var formData = new n_formData(id);
             new n_validator(formData, dataRules);
-            this.error = formData.error;
-            formData.error=[];
-            });
-        if(this.error.length > 0) {
-            e.preventDefault();
-            errorCallback(this.error);
-            return false;
-        }
-        return true;
-
+                if(formData.error.length > 0) {
+                    e.preventDefault();
+                    Callback(false, formData.error);
+                }else{
+                   Callback(true, {});
+                }
+        });
     }
 
 
